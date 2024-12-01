@@ -1,0 +1,22 @@
+# 1) Download kali iso file
+https://www.kali.org/get-kali/
+
+# 2) Setup kali in virtual box
+change network adapter 1 to NAT :  The NAT adapter allows a virtual machine to access external networks by sharing the host system's network connection.
+change network adapter 2 to Host-only : The Host-Only adapter creates a network that is only accessible between the virtual machine and the host system.
+
+#3) Setup DNS
+
+run: sudo nano /etc/network/interfaces
+
+paste:
+auto eth1
+iface eth1 inet dhcp
+
+sudo systemctl restart networking
+
+# 4) ping devices to see if the are connected
+ping 8.8.8.8: test if you can ping google
+
+run ipconfig (windows) ifconfig (linux)
+ping the ip from the second network adapter (192.168.x.x or 10.0.0.x or 172.16.x.x)

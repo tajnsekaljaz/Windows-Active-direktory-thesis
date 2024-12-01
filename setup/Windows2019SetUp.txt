@@ -1,0 +1,36 @@
+# 1) Download windows 2019 server iso
+https://www.microsoft.com/en-us/evalcenter/download-windows-server-2019
+
+# 2) Setup server in virtual box
+change network adapter 1 to NAT :  The NAT adapter allows a virtual machine to access external networks by sharing the host system's network connection.
+change network adapter 2 to Host-only : The Host-Only adapter creates a network that is only accessible between the virtual machine and the host system. 
+
+# 3) In power shell set up Active Directory
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+Install-windowsfeature AD-domain-services
+
+Import-Module ADDSDeployment
+
+# 4) Set up the domain, make sure that you use the same domain name (skypia.org)
+
+Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath "C:\\Windows\\NTDS" -DomainMode "7" -DomainName "skypia.org" -DomainNetbiosName "skypia" -ForestMode "7" -InstallDns:$true -LogPath "C:\\Windows\\NTDS" -NoRebootOnCompletion:$false -SysvolPath "C:\\Windows\\SYSVOL" -Force:$true
+
+# 5) Pull the script, that makes the AD volarable
+
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/WaterExecution/vulnerable-AD-plus/master/vulnadplus.ps1 -OutFile 'vulnadplus.ps1'
+
+# 6) Run the script
+
+Import-Module vulnadplus.ps1
+
+Invoke-VulnAD -UsersLimit 200 -DomainName "skypia.org"
+
+# In server maneger install recomended tools 
+
+Server Manager -> Manage -> Add Roles and Features 
+Server Selection: select file and Storage services
+Features: select Remote Server Administration Tools -> Role Administrator Tools -> AD DS and AD LDS Tools 
+Install
+ 
