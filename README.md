@@ -1,7 +1,6 @@
 # Windows-Active-direktory-thesis
 
-In this git hub repository I will walk you thrue installing an vulnerable Active Direcory on a windows 2019 server. What are some of the attacks that the AD is vulnerable to and how to setup the correct proteciton.
-
+In this GitHub repository, I will guide you through the process of setting up a vulnerable Active Directory on a Windows Server 2019. I will also show you some of the common attacks that this AD environment is vulnerable to, and explain how to implement the appropriate protections to secure it.
 
 
 
