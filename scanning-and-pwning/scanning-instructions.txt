@@ -1,0 +1,23 @@
+# 1) Check for installed arp-scann
+# arp-schan sends ARP requests to all of IP addresses on a local network.
+
+sudo apt update
+sudo apt install arp-scan
+
+# 2) Run the provided scripth that scans each network adapter
+
+The script runs a simple one line commant that scans each networ adapter, to check for an IP
+
+If the script can`t be exectued change the premistion, so that the file is executable:
+chmod +x arp-scan.sh
+
+
+# 3) Run nmap (Network Mapper) that scans the retturned ip addresses
+Network exploration tool and security / port scanner
+
+nmap -sV -sC -vv -p- -Pn <<IP>>
+
+-sV: Probe open ports to determine service/version info
+-sC: Scans for scripts (These scripts check for common vulnerabilities, gather information, and perform basic security checks)
+-vv: Incrises verosity level (Gives more detailed inforamation)
+-p-: Scans for specific port (scans all default port ranges)

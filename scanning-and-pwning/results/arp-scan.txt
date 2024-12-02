@@ -1,0 +1,24 @@
+└─$ sudo ./arp-scan.sh                                                
+[sudo] password for zazo: 
+_________________________
+Scanning interface eth0
+Interface: eth0, type: EN10MB, MAC: 08:00:27:47:9f:13, IPv4: 10.0.2.15
+Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
+10.0.2.2        52:55:0a:00:02:02       (Unknown: locally administered)
+10.0.2.3        52:55:0a:00:02:03       (Unknown: locally administered)
+
+2 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan 1.10.0: 256 hosts scanned in 2.389 seconds (107.16 hosts/sec). 2 responded
+_________________________
+Scanning interface eth1
+Interface: eth1, type: EN10MB, MAC: 08:00:27:ea:c2:7f, IPv4: 192.168.56.109
+Starting arp-scan 1.10.0 with 256 hosts (https://github.com/royhills/arp-scan)
+192.168.56.1    0a:00:27:00:00:00       (Unknown: locally administered)
+192.168.56.100  08:00:27:65:0c:9c       PCS Systemtechnik GmbH
+192.168.56.107  08:00:27:65:99:7b       PCS Systemtechnik GmbH
+
+3 packets received by filter, 0 packets dropped by kernel
+Ending arp-scan 1.10.0: 256 hosts scanned in 2.168 seconds (118.08 hosts/sec). 3 responded
+_________________________
+Scanning interface lo
+ERROR: Could not obtain MAC address for interface lo
