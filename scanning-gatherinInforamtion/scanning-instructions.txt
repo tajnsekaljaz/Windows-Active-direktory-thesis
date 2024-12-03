@@ -1,0 +1,31 @@
+# 1) Check for installed arp-scann
+# arp-schan sends ARP requests to all of IP addresses on a local network.
+
+sudo apt update
+sudo apt install arp-scan
+
+# 2) Run the provided scripth that scans each network adapter
+
+The script runs a simple one line commant that scans each networ adapter, to check for an IP
+
+If the script can`t be exectued change the premistion, so that the file is executable:
+chmod +x arp-scan.sh
+
+
+# 3) Run nmap (Network Mapper) that scans the retturned ip addresses
+Network exploration tool and security / port scanner
+
+nmap -sV -sC -vv -p- -Pn <<IP>>
+
+-sV: Probe open ports to determine service/version info
+-sC: Scans for scripts (These scripts check for common vulnerabilities, gather information, and perform basic security checks)
+-vv: Incrises verosity level (Gives more detailed inforamation)
+-p-: Scans for specific port (scans all default port ranges)
+
+What did i learn from the scan?
+
+The Nmap scan results provide a detailed picture of the system and the network services it’s running. For example, port 53 is open and running Simple DNS Plus, which handles translating domain names into IP addresses—a fundamental part of how the internet works. Port 88 shows that Microsoft Windows Kerberos is active, which is used for secure authentication across the network. This also gives us a server timestamp, which is helpful for checking if the system’s clock is synced.
+Port 135 is tied to Microsoft Windows RPC, a service that allows different programs to communicate with each other, either on the same machine or across the network. Ports 139 and 445 are significant because they indicate NetBIOS and SMB (Server Message Block) are running, protocols commonly used for sharing files and printers in a Windows environment. The presence of LDAP services on ports 389 and 3268 tells us this system is likely part of an Active Directory domain, where LDAP helps manage users, computers, and resources.
+We also see HTTP services running on ports like 5985 and 47001, specifically Microsoft’s HTTPAPI, which supports tasks like remote server management. Another interesting service on port 9389 is .NET Message Framing, which is part of how Microsoft systems handle communications in distributed applications. Additionally, the scan reveals a lot of activity on RPC ports, which are essential for the system’s administrative and functional tasks.
+Security checks indicate the system is clean of the Conficker worm, which is reassuring. The SMB configurations also show that message signing is enabled and required, which adds a layer of protection to file-sharing operations. From the host scripts, we can see the machine’s NetBIOS name and group details, as well as that it’s running in a virtualized environment using Oracle VirtualBox.
+Altogether, the scan paints the picture of a Windows server operating in an Active Directory domain. It’s configured with a range of services for authentication, file sharing, directory access, and remote management, which suggests it’s a well-rounded setup typical for many networked environments.
