@@ -29,3 +29,21 @@ Port 135 is tied to Microsoft Windows RPC, a service that allows different progr
 We also see HTTP services running on ports like 5985 and 47001, specifically Microsoft’s HTTPAPI, which supports tasks like remote server management. Another interesting service on port 9389 is .NET Message Framing, which is part of how Microsoft systems handle communications in distributed applications. Additionally, the scan reveals a lot of activity on RPC ports, which are essential for the system’s administrative and functional tasks.
 Security checks indicate the system is clean of the Conficker worm, which is reassuring. The SMB configurations also show that message signing is enabled and required, which adds a layer of protection to file-sharing operations. From the host scripts, we can see the machine’s NetBIOS name and group details, as well as that it’s running in a virtualized environment using Oracle VirtualBox.
 Altogether, the scan paints the picture of a Windows server operating in an Active Directory domain. It’s configured with a range of services for authentication, file sharing, directory access, and remote management, which suggests it’s a well-rounded setup typical for many networked environments.
+
+# 4) smbmap is a tool designed for enumerating SMB shares and their permissions.
+
+smbmap -H 192.168.56.107
+
+# 5) Enum4linux-ng is a tool used for gathering information from Windows systems via SMB (Server Message Block) and NetBIOS protocols. 
+
+enum4linux-ng 192.168.56.107
+
+# 6) crackmapexec can enumerate SMB shares, users, and domain information.
+
+crackmapexec smb 192.168.56.107
+
+# 7) Evaluation on what I learned from the scanns
+
+So after running bouth 4 scanns I learned that the 2 most usefull were nmap and Enum4linux-ng. 
+The scan revealed that the target is part of the SKYPIA domain, running Windows Server 2019 (or a similar OS version) with SMB signing required and modern SMB protocols supported (SMB 2.02 to SMB 3.1.1). However, access to detailed user, group, share, and policy information was mostly denied, indicating restricted permissions for unauthenticated sessin.
+
