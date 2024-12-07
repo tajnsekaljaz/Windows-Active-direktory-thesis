@@ -16,10 +16,13 @@ Security Settings > Local Policies > Security Options
 Modify the following settings:
 
 Network access: Restrict anonymous access to Named Pipes and Shares: From Disabled to Enabled.
-Network access: Shares that can be accessed anonymously: From C:\\ to  empty.
+Network access: Shares that can be accessed anonymously: From C:\Common to  empty.
 Network access: Named Pipes that can be accessed anonymously: From netlogon, samr, Isarpc to empty.
 
 Accounts: Guest account status form Enabled to Disabled
+
+Network access: Let everyone permissions apply to anonymous users: to Disabled
+Network access: Do not allow anonymous enumeration of SAM accounts and shares: to Disabled
 
 Resoults 
 From:
