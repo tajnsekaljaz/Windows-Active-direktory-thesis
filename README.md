@@ -5,5 +5,12 @@ In this GitHub repository, I will guide you through the process of setting up a 
 [!IMPORTANT]  
 The thesis is still a work in progress.
 
-A guide how to setup the vms for penetration testing
-[a link](https://https://github.com/tajnsekaljaz/Windows-Active-direktory-thesis/tree/main/setup)
+## Setting Up the Environment
+
+To get started, please refer to the following setup instructions:
+
+- **[Kali Linux Setup Guide](setup/kaliSetUp.md)**: Steps for setting up Kali Linux for penetration testing.
+- **[Windows 2019 VM Setup Guide](setup/windows2019VMsetup.md)**: Instructions for configuring a Windows Server 2019 VM to run Active Directory.
+
+These setup guides are located in the `setup` directory, which is essential for getting the vulnerable Active Directory environment up and running.
+
