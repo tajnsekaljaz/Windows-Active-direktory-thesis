@@ -1,0 +1,8 @@
+# 1) Find a user that has administrator privliges
+
+for each user try:
+evil-winrm -i 192.168.56.107 -u jemmie.blondell
+then run:
+net localgroup Administrators
+
+

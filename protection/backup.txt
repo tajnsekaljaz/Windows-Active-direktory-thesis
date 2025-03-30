@@ -1,0 +1,15 @@
+PS C:\Users\Administrator> wbadmin start systemstatebackup -backupTarget:G: -quiet
+wbadmin 1.0 - Backup command-line tool
+(C) Copyright Microsoft Corporation. All rights reserved.
+
+Starting to back up the system state [12/13/2024 2:24 PM]...
+Retrieving volume information...
+This will back up the system state from volume(s) System Reserved (549.00 MB),(C:) to G:.
+
+wbadmin get versions
+wbadmin start systemstaterecovery -version:12/15/2024-00:00 -backupTarget:D: -quiet
+
+$Action = New-ScheduledTaskAction -Execute "wbadmin" -Argument "start systemstatebackup -backupTarget:G: -quiet"
+$Trigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Friday -At "00:00AM"
+$Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Description "Weekly Active Directory Backup"
+Register-ScheduledTask -TaskName "AD_Backup" -InputObject $Task
