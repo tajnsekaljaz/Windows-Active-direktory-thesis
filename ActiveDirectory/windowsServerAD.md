@@ -68,9 +68,3 @@ A Domain Controller is a server that provides authentication and authorization s
 ### Active Directory Sites
 - Represent **physical network topology**.
 - Improve **network efficiency** by reducing replication traffic.
-
----
-
-## 6. Conclusion
-Windows Server, combined with Active Directory, provides a **secure, scalable, and centralized** network management solution. Through **Hyper-V, Azure integration, and advanced security features**, businesses can optimize their IT infrastructure while ensuring high levels of **data protection and authentication control**.
-
