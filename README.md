@@ -5,6 +5,12 @@ In this GitHub repository, I will guide you through the process of setting up a 
 [!IMPORTANT]  
 The thesis is still a work in progress.
 
+## Basic inormation about Windows active directory and attacks used
+
+To get the basinc understanding of the techonlogy used folow the links.
+
+- **[Information about Active Directory](ActiveDirectory/windowsServersAD.md)**: Some information about the services we are attacking.
+- **[Inforamtion about the attacks used](ActiveDirectory/usedAttacks.md)**: Some information about the attacks that were used in the exercise. 
 ## Setting Up the Environment
 
 To get started, please refer to the following setup instructions:
