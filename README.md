@@ -20,3 +20,9 @@ To get started, please refer to the following setup instructions:
 
 These setup guides are located in the `setup` directory, which is essential for getting the vulnerable Active Directory environment up and running.
 
+## Enumeration and first attacks
+
+- **[Scanning Instructions](enumeration/Scanning_Instructions.md)**: Instructions on how to perform network scanning and enumeration.
+- **[Impacket and Evil-WinRM Steps](Kerberoasting/attack/Impacket_Evil_WinRM_Steps.md)**: Detailed steps on using Impacket and Evil-WinRM for attacks and gaining remote access.
+- **[User Creation and Password Spraying Attack](Password\ Spraying/attack/User_Creation_and_Spraying_Attacks.md)**: Instructions on creating user files and running password spraying attacks.
+
