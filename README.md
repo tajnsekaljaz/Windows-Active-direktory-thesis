@@ -9,7 +9,7 @@ The thesis is still a work in progress.
 
 To get the basinc understanding of the techonlogy used folow the links.
 
-- **[Information about Active Directory](ActiveDirectory/windowsServersAD.md)**: Some information about the services we are attacking.
+- **[Information about Active Directory](ActiveDirectory/windowsServerAD.md)**: Some information about the services we are attacking.
 - **[Inforamtion about the attacks used](ActiveDirectory/usedAttacks.md)**: Some information about the attacks that were used in the exercise. 
 ## Setting Up the Environment
 
