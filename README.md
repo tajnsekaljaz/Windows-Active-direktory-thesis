@@ -24,5 +24,5 @@ These setup guides are located in the `setup` directory, which is essential for 
 
 - **[Scanning Instructions](enumeration/Scanning_Instructions.md)**: Instructions on how to perform network scanning and enumeration.
 - **[Impacket and Evil-WinRM Steps](Kerberoasting/attack/Impacket_Evil_WinRM_Steps.md)**: Detailed steps on using Impacket and Evil-WinRM for attacks and gaining remote access.
-- **[User Creation and Password Spraying Attack](Password%20Spraying/attack/User_Creation_and_Spraying_Attacks.md)**: Instructions on creating user files and running password spraying attacks.
+- **[Password Spraying Attack](Password%20Spraying/attack/User_Creation_and_Spraying_Attacks.md)**: Instructions on creating user files and running password spraying attacks.
 
