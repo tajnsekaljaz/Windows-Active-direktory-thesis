@@ -20,6 +20,12 @@ To get started, please refer to the following setup instructions:
 
 These setup guides are located in the `setup` directory, which is essential for getting the vulnerable Active Directory environment up and running.
 
+
+## Attacks explanation
+
+- **[Kerberosting explained]**(Kerberoasting/attackExplained.md)
+- **[Password spraying explained]**(Password%20Spraying/attackExplained.md)
+- **[DC sync Attack explained]**(DCSync%20Attack/attackExplained.md)
 ## Enumeration and first attacks
 
 - **[Scanning Instructions](enumeration/Scanning_Instructions.md)**: Instructions on how to perform network scanning and enumeration.
